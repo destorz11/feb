@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Для моей любимой</title>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<style>
+		body {
+			background: linear-gradient(135deg, #FFC0CB, #FF69B4);
+			text-align: center;
+			font-family: 'Arial', sans-serif;
+			color: white;
+			overflow-x: hidden;
+			height: 100%;
+		}
+
+		.container {
+			padding: 50px;
+		}
+
+		h1 {
+			font-size: 3em;
+			opacity: 0;
+			animation: fadeIn 2s forwards;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.heart {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background-color: red;
+			clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 75%, 25% 100%, 0% 35%);
+			opacity: 0.7;
+			animation: float 4s infinite;
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(0);
+				opacity: 0.7;
+			}
+
+			50% {
+				opacity: 1;
+			}
+
+			100% {
+				transform: translateY(-100vh);
+				opacity: 0;
+			}
+		}
+
+		.swiper {
+			width: 90%;
+			max-width: 600px;
+			margin: auto;
+		}
+
+		.swiper-slide img {
+			max-width: 100%;
+			height: 300px;
+			object-fit: cover;
+			border-radius: 15px;
+			box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+		}
+
+		.surprise-btn {
+			margin-top: 20px;
+			padding: 10px 20px;
+			font-size: 1.2em;
+			background-color: #8B4513;
+			color: white;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: transform 0.2s;
+		}
+
+		.surprise-btn:hover {
+			transform: scale(1.1);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Моя любовь к тебе безгранична! ❤️</h1>
+		<p>Ты — как мой любимый кофе: даришь тепло и пробуждаешь счастье ☕</p>
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img src="photo-1.jpg" alt="Фото 1"></div>
+				<div class="swiper-slide"><img src="photo-2.jpg" alt="Фото 2"></div>
+				<div class="swiper-slide"><img src="photo-3.jpg" alt="Фото 3"></div>
+			</div>
+			<div class="swiper-pagination"></div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+		<button class="surprise-btn" onclick="showSurprise()">Нажми меня ☕</button>
+	</div>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script>
+		function createHeart() {
+			const heart = document.createElement('div')
+			heart.classList.add('heart')
+			heart.style.left = Math.random() * 100 + 'vw'
+			heart.style.animationDuration = Math.random() * 3 + 2 + 's'
+			document.body.appendChild(heart)
+			setTimeout(() => { heart.remove() }, 4000)
+		}
+		setInterval(createHeart, 300)
+
+		const swiper = new Swiper('.swiper', {
+			loop: true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		})
+
+		function showSurprise() {
+			alert('Ты - мой ароматный капучино, который делает каждый день лучше! ☕💖')
+		}
+	</script>
+</body>
+
+</html>
